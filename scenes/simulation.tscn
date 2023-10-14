@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3l0gks5xy48m"]
+
+[ext_resource type="Script" path="res://assets/scripts/simulation.gd" id="1_crf37"]
+[ext_resource type="Script" path="res://assets/scripts/Particle.gd" id="2_sr8no"]
+
+[node name="Simulation" type="Node2D" groups=["Particles"]]
+script = ExtResource("1_crf37")
+DEFAULT_GRAVITY = 0.0
+boundingBoxBorderWeight = 32
+number_of_particles = 20
+particleRadius = 7
+
+[node name="Particle" type="Node2D" parent="."]
+script = ExtResource("2_sr8no")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="UI"]
+offset_left = 942.0
+offset_top = 8.0
+offset_right = 993.0
+offset_bottom = 39.0
+text = "Reset"
+
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
